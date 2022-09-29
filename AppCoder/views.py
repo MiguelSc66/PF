@@ -3,7 +3,7 @@ from django.shortcuts import render
 from calendar import c
 from django.http import HttpResponse
 from django.template import Template,  Context
-from AppCoder.models import Family3, entregable, profesor, estudiate
+from AppCoder.models import *
 from AppCoder.forms import *
 # Create your views here.
 def inicio(request): 
@@ -72,28 +72,28 @@ def fromulario2(request):
 	
 	if request.method=="POST":
 
-		formulario2 = FormularioEstudainte(request.POST)
+		formulario2 = FormularioEstudiante(request.POST)
 
 		if formulario2.is_valid(): #manera de ver si tenemos errores
 		
 			info = formulario2.cleaned_data
 
-			estdianteF = estudiate(nombre=info["nombre"], apellido=info["apellido"], correo=info["correo"])
+			estudianteF = estudiante(nombre=info["nombre"], apellido=info["apellido"], correo=info["correo"])
 
-			estdianteF.save() #se realiza el guardado en la base de datos
+			estudianteF.save() #se realiza el guardado en la base de datos
 
 			return render(request, "AppCoder/inicio.html") #nos vuelve a mostrar la pagina del formulario vacia o la podemos redireccionar a otra parte de la pagina
 
 	else: 
 		
-		formulario2=FormularioEstudainte() #muestra el formulario vacio
+		formulario2 = FormularioEstudiante() #muestra el formulario vacio
 	
-	return render(request, "AppCoder/formu2.html", {"form2":formulario2}) #entero añ url y me muestra esta plantilla
+	return render(request, "AppCoder/formu2.html", {"form2":formulario2}) #entro al url y me muestra esta plantilla
 
 
-def busquedaProfes(requst):
+def busquedaProfes(request):
 
-	return render(requst, "AppCoder/busquedaProfes.html")
+	return render(request, "AppCoder/busquedaProfes.html")
 
 def buscar(request):
 

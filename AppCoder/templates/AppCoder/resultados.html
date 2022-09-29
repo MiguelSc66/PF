@@ -10,20 +10,17 @@
     
     <p>Estas buscando al profesor: {{nombre}}</p>
 
-        {% if profes %}
-
+    {% for profes in profe %}
         <ul>
-        {% for profes in profesor %}
+       
             <li> Nombre: {{profes.nombre}} </li>
             <li> Apellido: {{profes.apellido}} </li>
             <li> Correo: {{profes.correo}} </li>
             <li> Profesion: {{profes.profesion}} </li>
 
-        {% endfor %}
+       
         </ul>
-
-        {% endif %}
-   
+    {% endfor %}
 
 </body>
 </html>

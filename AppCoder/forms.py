@@ -6,7 +6,7 @@ class FormularioProfesor(forms.Form):
     correo = forms.EmailField()
     profesion = forms.CharField()    
 
-class FormularioEstudainte(forms.Form):
+class FormularioEstudiante(forms.Form):
     nombre = forms.CharField()
     apellido = forms.CharField()
     correo = forms.EmailField()
